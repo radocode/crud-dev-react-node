@@ -51,24 +51,27 @@ class UploadScreen extends Component {
     // console.log("prop values",this.props.role);
     var self = this;
 
-    axios.get(apiBaseUrl + '/tickets')
-      .then(function (response) {
-        console.log(response);
-        if (response.data.code == 200) {
-          console.log("Tickets ok: ", response);
-          
-          self.props.appContext.setState({ tickets: response });
-        }
-        else {
-          console.log("No hay tickets");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  
+    if (this.state.usuario_id) {
+      // tomar usuario id del state
+      axios.get(apiBaseUrl + '/tickets?userId=' + this.state.usuario_id)
+        .then(function (response) {
+          console.log(response);
+          if (response.data.code == 200) {
+            console.log("Tickets ok: ", response);
+
+            self.props.appContext.setState({ tickets: response });
+          }
+          else {
+            console.log("No hay tickets");
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+
   }
-  
+
   /*
     Function:handleClick
     Parameters: event
@@ -167,14 +170,14 @@ class UploadScreen extends Component {
                 </TableRow>
               </TableHeader>
               <TableBody>
-              {this.state.tickets && this.state.tickets.length > 0 ? this.state.tickets.map((item, key) =>
-                <TableRow>
-                  <TableRowColumn>{item}</TableRowColumn>
-                  <TableRowColumn>{item}</TableRowColumn>
-                  <TableRowColumn>{item}</TableRowColumn>
-                  <TableRowColumn>{item}</TableRowColumn>
-                </TableRow>
-              ) : ''}
+                {this.state.tickets && this.state.tickets.length > 0 ? this.state.tickets.map((item, key) =>
+                  <TableRow>
+                    <TableRowColumn>{item}</TableRowColumn>
+                    <TableRowColumn>{item}</TableRowColumn>
+                    <TableRowColumn>{item}</TableRowColumn>
+                    <TableRowColumn>{item}</TableRowColumn>
+                  </TableRow>
+                ) : ''}
               </TableBody>
             </Table>
           </MuiThemeProvider>

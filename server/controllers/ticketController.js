@@ -5,7 +5,7 @@ var Ticket = require('../models/ticketModel');
 var genericError = { message: 'Error generico', data: null };
 
 exports.list_all_tickets = function (req, res) {
-    Ticket.getTickets(function (err, ticket) {
+    Ticket.getTickets(req, function (err, ticket) {
         console.log('controller')
         if (err) {
             genericError.data = err;

@@ -104,10 +104,11 @@ class Login extends Component {
       .then(function (response) {
         console.log(response);
         if (response.data.code == 200) {
-          console.log("Login ok");
+          console.log("Login ok: ", response);
           var uploadScreen = [];
           uploadScreen.push(<UploadPage appContext={self.props.appContext} role={self.state.loginRole} />)
-          self.props.appContext.setState({ loginPage: [], uploadScreen: uploadScreen })
+          self.props.appContext.setState({ loginPage: [], 
+            uploadScreen: uploadScreen, userId: response.data && response.data.length > 0 ? response.data[0].id : null })
         }
         else if (response.data.code == 204) {
           console.log("User o password no coinciden");
