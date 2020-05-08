@@ -7,10 +7,11 @@ var Ticket = function (ticket) {
     this.id = ticket.id;
     this.usuario_id = ticket.usuario_id;
     this.ticket_pedido = ticket.ticket_pedido;
+    this.nombreUsuario = ticket.nombreUsuario;
 };
 // CRUD tickets
 Ticket.getTickets = function (result) {
-    sql.query("SELECT id,usuario_id,ticket_pedido from ticket",
+    sql.query("SELECT t.id as id,t.usuario_id as usuario_id,t.ticket_pedido as ticket_pedido, u.nombre as nombreUsuario from ticket t inner join usuario u on t.usuario_id = u.id ",
         function (err, res) {
             if (err) {
                 console.log("error: ", err);

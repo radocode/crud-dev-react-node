@@ -5,7 +5,7 @@ import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
 import FontIcon from 'material-ui/FontIcon';
 import {blue500, red500, greenA200} from 'material-ui/styles/colors';
-import UploadScreen from './UploadScreen';
+import UploadScreen from './UserScreen';
 import Pastfiles from './Pastfiles';
 import LoginScreen from './Loginscreen'
 
