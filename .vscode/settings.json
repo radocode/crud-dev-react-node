@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "keiron_db",
+            "dialect": "MySQL",
+            "name": "local",
+            "password": "keironpass",
+            "port": 3306,
+            "server": "localhost",
+            "username": "keiron"
+        }
+    ]
+}
