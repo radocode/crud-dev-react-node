@@ -6,6 +6,10 @@ port = process.env.PORT || 4000;
 const mysql = require('mysql');
 const config = require('./config/config');
 
+var cors = require('cors')
+
+app.use(cors());
+
 // Configs de la DB
 const mc = mysql.createConnection({
   host: config.config.host,
@@ -22,6 +26,10 @@ process.on('SIGTERM', () => {
   server.close(() => {
     console.log('Process terminated');
   })
+});
+
+process.on('uncaughtException', (err, origin) => {
+  console.log("error and origin: ", err, origin);
 });
 
 console.log('API server started on: ' + port);

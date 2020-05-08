@@ -59,7 +59,7 @@ User.loginUser = function (user, result) {
                 } else {
                     // si el hash corresponde, el login es valido!
                     console.log('Usuario a comprobar login: ', res);
-                    bcrypt.compare(res[0].pass, hash, function (err, result) {
+                    bcrypt.compare(res[0].pass, hash, function (err, re) {
                         result(null, res);
                     });
                 }
