@@ -4,6 +4,10 @@ module.exports = function (app) {
   var userController = require('../controllers/userController');
   var ticketController = require('../controllers/ticketController');
 
+  // Login
+  app.route('/login')
+  .post(userController.login_user);
+
   // User Routes
   app.route('/user')
     .get(userController.read_a_user)

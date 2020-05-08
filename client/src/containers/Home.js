@@ -18,7 +18,7 @@ const Home = props => {
         justifyContent: "center"
       }}
     >
-      <Card>
+      {/* <Card>
         <CardContent>
           <Typography variant="headline" headlineMapping={"h1"}>
             Redux Example
@@ -43,7 +43,7 @@ const Home = props => {
             Decrement
           </Button>
         </CardActions>
-      </Card>
+      </Card> */}
     </div>
   );
 };
